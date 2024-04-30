@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Text.Json;
 
 namespace API.Controllers
@@ -18,7 +19,7 @@ namespace API.Controllers
         [HttpGet("hc")]
         public IActionResult hc()
         {
-            var json = JsonSerializer.Serialize(new { message = "Healthy" });
+            var json = JsonSerializer.Serialize(new { message = $"Healthy {DateTime.Now}" });
 
             return Ok(json);
         }
