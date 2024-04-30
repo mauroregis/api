@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace API.Controllers
 {
@@ -12,6 +13,14 @@ namespace API.Controllers
             var host = HttpContext.Request.Host.Value;
 
             return Ok(host);
+        }
+
+        [HttpGet("hc")]
+        public IActionResult hc()
+        {
+            var json = JsonSerializer.Serialize(new { message = "Healthy" });
+
+            return Ok(json);
         }
     }
 }
