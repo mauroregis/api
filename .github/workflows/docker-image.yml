@@ -22,7 +22,8 @@ jobs:
       run: |
         cd ${{ env.DIR_WEBAPP }}
         ls
-        docker build . --file ./API/Dockerfile --tag ${{ env.IMAGE_DOCKERHUB }}:v${{ github.run_number }}
+        #docker build . --file ./API/Dockerfile --tag ${{ env.IMAGE_DOCKERHUB }}:v${{ github.run_number }}
+        docker build . --file Dockerfile --tag ${{ env.IMAGE_DOCKERHUB }}:latest 
     - name: Login no Docker Hub
       uses: docker/login-action@v2.1.0
       with:
@@ -30,5 +31,6 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
     - name: Geração de tag com número do Build e Push no Docker Hub
       run: |
-        docker tag ${{ env.IMAGE_DOCKERHUB }}:latest ${{ env.IMAGE_DOCKERHUB }}:v${{ github.run_number }}
+        #docker tag ${{ env.IMAGE_DOCKERHUB }}:latest ${{ env.IMAGE_DOCKERHUB }}:v${{ github.run_number }}
+        docker tag ${{ env.IMAGE_DOCKERHUB }}:latest ${{ env.IMAGE_DOCKERHUB }}:$GITHUB_RUN_NUMBER
         docker push --all-tags ${{ env.IMAGE_DOCKERHUB }}
