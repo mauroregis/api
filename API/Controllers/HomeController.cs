@@ -22,7 +22,7 @@ namespace API.Controllers
             var json = JsonSerializer.Serialize(new
             {
                 message = "Healthy",
-                time = DateTime.Now.ToShortDateString()
+                time = DateTime.Now.ToLongDateString()
             });
 
             return Ok(json);
