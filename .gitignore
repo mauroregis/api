@@ -10,3 +10,5 @@
 /API/API.csproj.user
 /.vs/API/DesignTimeBuild
 /API/API.csproj.user
+
+.fake
