@@ -19,7 +19,11 @@ namespace API.Controllers
         [HttpGet("hc")]
         public IActionResult hc()
         {
-            var json = JsonSerializer.Serialize(new { message = $"Healthy {DateTime.Now}" });
+            var json = JsonSerializer.Serialize(new
+            {
+                message = "Healthy",
+                time = DateTime.Now
+            });
 
             return Ok(json);
         }
