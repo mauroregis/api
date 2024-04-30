@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  IMAGE_DOCKERHUB: ${{ secrets.DOCKERHUB_USERNAME }}/api
+  IMAGE_DOCKERHUB: mauroregis/api
   DIR_WEBAPP: './'
   
 jobs:
