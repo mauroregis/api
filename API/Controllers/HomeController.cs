@@ -23,7 +23,7 @@ namespace API.Controllers
             {
                 message = "Healthy",
                 time = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"),
-                version = "1.0.2"
+                version = "1.0.3"
             });
 
             return Ok(json);
