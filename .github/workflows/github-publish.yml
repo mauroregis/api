@@ -3,6 +3,8 @@ name: Build and Push to Github
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'github-publish.yml'    
   pull_request:
     branches: [ "main" ]
 
