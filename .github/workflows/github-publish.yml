@@ -35,11 +35,6 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.CR_PAT }}
-
-    - name: Geração de tag com número do Build e Push no Docker Hub
-      run: |
-        docker tag ${{ env.IMAGE_DOCKERHUB }}:latest ${{ env.IMAGE_DOCKERHUB }}:v${{ github.run_number }}
-        docker push --all-tags ${{ env.IMAGE_DOCKERHUB }}
         
     - name: Build and push Docker image
       uses: docker/build-push-action@v3
