@@ -19,13 +19,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-
-    - name: PreCheck
-      run: |
-        pwd
-        ls    
    
-    - name: Build de imagem
+    - name: Docker build
       run: |
         docker build . --file ./API/Dockerfile --tag ${{ env.IMAGE_DOCKERHUB }}:latest     
 
