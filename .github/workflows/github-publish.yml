@@ -10,6 +10,7 @@ on:
 
 env:
   GITHUB_USER: ${{ github.repository_owner }}
+  GITHUB_PASSWORD: ${{ secrets.GYTHUB_PAT }}
   IMAGE_NAME: ${{ github.repository_owner }}/api
 
 jobs:
@@ -29,7 +30,7 @@ jobs:
       with:
         registry: ghcr.io
         username: ${{ env.GITHUB_USER }}
-        password: ${{ secrets.GYTHUB_PAT }}
+        password: ${{ env.GITHUB_PASSWORD }}
         
     - name: Build and push Docker image
       uses: docker/build-push-action@v3
