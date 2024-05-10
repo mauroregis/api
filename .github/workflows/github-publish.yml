@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'github-publish.yml'    
+      - '.github//workflows/github-publish.yml'    
   pull_request:
     branches: [ "main" ]
 
