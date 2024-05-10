@@ -19,6 +19,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: PreCheck
+      run: |
+        pwd
+        ls    
    
     - name: Build de imagem
       run: |
