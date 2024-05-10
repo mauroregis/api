@@ -3,14 +3,14 @@ name: Build and Push to Github
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - '.github/workflows/github-publish.yml'    
+    #paths:
+    #  - '.github/workflows/github-publish.yml'    
   pull_request:
     branches: [ "main" ]
 
 env:
-  IMAGE_DOCKERHUB: mregis/api
-  DIR_WEBAPP: './'    
+  GITHUB_USER: ${{ github.repository_owner }}
+  IMAGE_NAME: ${{ github.repository_owner }}/api
 
 jobs:
 
@@ -22,18 +22,18 @@ jobs:
    
     - name: Docker build
       run: |
-        docker build . --file ./API/Dockerfile --tag ${{ env.IMAGE_DOCKERHUB }}:latest     
+        docker build . --file ./API/Dockerfile --tag ${{ env.IMAGE_NAME }}:latest     
 
     - name: Log in to GitHub - Container Registry
       uses: docker/login-action@v1
       with:
         registry: ghcr.io
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.CR_PAT }}
+        username: ${{ env.GITHUB_USER }}
+        password: ${{ secrets.GYTHUB_PAT }}
         
     - name: Build and push Docker image
       uses: docker/build-push-action@v3
       with:
         file: ./API/Dockerfile
         push: true
-        tags: ghcr.io/mauroregis/api:latest
+        tags: ghcr.io/${{ env.IMAGE_NAME }}:latest
