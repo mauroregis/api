@@ -3,8 +3,8 @@ name: Build and Push to Dockerhub
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - '.github/workflows/dockerhub-publish.yml'        
+    #paths:
+    #  - '.github/workflows/dockerhub-publish.yml'        
   pull_request:
     branches: [ "main" ]
 
@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
    
-    - name: Build de imagem
+    - name: Docker build
       run: |
         cd ${{ env.DIR_WEBAPP }}
         docker build . --file ./API/Dockerfile --tag ${{ env.IMAGE_DOCKERHUB }}:latest      
