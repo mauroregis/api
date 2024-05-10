@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main  # Executa o workflow quando há push na branch main
-    paths:
-      - 'API/**'  # Caminhos que, ao serem modificados, disparam o workflow
 
 jobs:
   build-and-push:
